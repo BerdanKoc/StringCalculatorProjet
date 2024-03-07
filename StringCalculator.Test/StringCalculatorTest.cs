@@ -13,36 +13,14 @@ namespace StringCalculator.Test
 
         [Theory]
         [MemberData(nameof(CasAPlusB))]
-        public void APlusB(int[] parts)
+        public void APlusB(params int[] parts)
         {
             var input = string.Join(",", parts);
 
-            var result = StringCalculator.Parse();
+            var result = StringCalculator.Parse(input);
 
             Assert.Equal(parts.Sum(), result);
         }
 
-        [Fact]
-        public void UnPlusZero()
-        {
-            var parts = new int[] { 0, 1 };
-
-            var input = string.Join(",", parts);
-
-            var result = StringCalculator.Parse();
-
-            Assert.Equal(parts.Sum(), result);
-        }
-        [Fact]
-        public void DeuxPlusZero()
-        {
-            var parts = new int[] { 2, 0 };
-
-            var input = string.Join(",", parts);
-
-            var result = StringCalculator.Parse();
-
-            Assert.Equal(parts.Sum(), result);
-        }
     }
 }   

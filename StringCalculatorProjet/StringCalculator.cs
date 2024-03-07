@@ -2,11 +2,10 @@
 {
     public class StringCalculator
     {
-        public static int Parse()
+        public static int Parse(string input)
         {
-            var input = "2,0";
             var parts = input.Split(',');
-            return int.Parse(parts.First()) + int.Parse(parts.Last());
+            return parts.Select(int.Parse).Sum();
         }
     }
 }
