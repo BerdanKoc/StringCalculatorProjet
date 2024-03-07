@@ -39,5 +39,17 @@ namespace StringCalculator.Test
             Assert.Equal(contrôle, result);
         }
 
+        [Fact]
+        public void NombresNegatifs_LanceExceptionAvecNombresEtPositions()
+        {
+            const string input = "-1,2,-3,4";
+
+            var exception = Assert.Throws<Exception>(() => StringCalculator.Parse(input));
+
+            Assert.Contains("-1", exception.Message);
+            Assert.Contains("-3", exception.Message);
+            Assert.Contains("positions", exception.Message);
+        }
+
     }
 }   
