@@ -9,6 +9,8 @@ namespace StringCalculator.Test
             yield return [0, 1];
             yield return [2, 0];
             yield return [0, 2];
+            yield return [4, 2, 7];
+            yield return [4, 2, 7, 9];
         }
 
         [Theory]
