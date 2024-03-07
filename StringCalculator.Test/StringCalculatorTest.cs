@@ -46,9 +46,8 @@ namespace StringCalculator.Test
 
             var exception = Assert.Throws<Exception>(() => StringCalculator.Parse(input));
 
-            Assert.Contains("-1", exception.Message);
-            Assert.Contains("-3", exception.Message);
-            Assert.Contains("positions", exception.Message);
+            Assert.Contains("-1 à la position 1", exception.Message);
+            Assert.Contains("-3 à la position 6", exception.Message);
         }
 
     }
