@@ -3,7 +3,7 @@ namespace StringCalculator.Test
     public class StringCalculatorTest
     {
         [Fact]
-        public void APlusB()
+        public void UnPlusZero()
         {
             var parts = new int[] { 0, 1 };
 
