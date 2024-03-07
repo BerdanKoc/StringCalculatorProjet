@@ -40,7 +40,7 @@ namespace StringCalculator.Test
         }
 
         [Fact]
-        public void NombresNegatifs_LanceExceptionAvecNombresEtPositions()
+        public void NombresNegatifs_LanceExceptionAvecNombresEtPositionsCas1()
         {
             const string input = "-1,2,-3,4";
 
@@ -49,6 +49,30 @@ namespace StringCalculator.Test
             Assert.Contains("-1 à la position 1", exception.Message);
             Assert.Contains("-3 à la position 6", exception.Message);
         }
+
+        public static IEnumerable<object[]> CasNombresNegatifs()
+        {
+            yield return new object[] { "-1,2,-3,4", new string[] { "-1", "-3" }, new int[] { 1, 6 } };
+            yield return new object[] { "-5,-8,3,-10,2", new string[] { "-5", "-8", "-10" }, new int[] { 1, 4, 9 } };
+        }
+
+        [Theory]
+        [MemberData(nameof(CasNombresNegatifs))]
+        public void NombresNegatifs_LanceExceptionAvecNombresEtPositions(string input, string[] nombresNegatifs, int[] positions)
+        {
+            var exception = Assert.Throws<Exception>(() => StringCalculator.Parse(input));
+
+            foreach (var nombre in nombresNegatifs)
+            {
+                Assert.Contains(nombre, exception.Message);
+            }
+
+            foreach (var position in positions)
+            {
+                Assert.Contains(position.ToString(), exception.Message);
+            }
+        }
+
 
     }
 }   
